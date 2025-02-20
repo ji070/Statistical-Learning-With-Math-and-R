@@ -1,8 +1,9 @@
 ---
-title: "Statistical Learning with Math and R"
+title: "Chapter 3: Classification"
+subtitle: "$k$-Nearest Neighbor Method and ROC Curves"
 author: "Jiye Shin"
 date: February 23, 2025
-institute: Department of Statistics \newline Sungshin Women’s University
+institute: Descendants of Lagrange \newline School of Mathematics, Statistics and Data Science \newline Sungshin Women’s University
 fonttheme: "serif"
 fontsize: 8pt
 output:
