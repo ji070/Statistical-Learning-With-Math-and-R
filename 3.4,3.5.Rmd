@@ -1,7 +1,7 @@
 ---
 title: "Statistical Learning with Math and R"
 author: "Jiye Shin"
-date: February 12, 2025
+date: February 23, 2025
 institute: Department of Statistics \newline Sungshin Women’s University
 fonttheme: "serif"
 fontsize: 8pt
@@ -24,35 +24,30 @@ header-includes:
 \vt
 - 데이터 $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$이 주어졌을 때, 새로운 데이터 $x$의 값 $y$를 예측하고 싶다면, $x$와 가장 가까운 $k$개의 데이터를 찾고 그들의 다수결(majority vote)을 따르는 방식
 \vt
-- 거리(distance)는 유클리드 거리(euclidean distance) 를 사용
+- 거리(distance)는 유클리드 거리(Euclidean distance)를 사용
 
 
 ## $k$-Nearest Neighbor Method 예제 
 
-- **주어진 데이터**
+- 주어진 데이터
 
 | $x_i$ | -2.1 | -3.7 | 1.3 | 0.4 | 1.5 |
 |-------|:----:|:----:|:---:|:---:|:---:|
 | $y_i$ |  -1  |   1  |  0  |  0  |  1  |
 
-- **새로운 데이터**  
-$x_* = -2.2$  
-$k = 2$ 
+- 새로운 데이터: $x_* = -2.2$, $k = 2$
 
-- **가장 가까운 두 개의 점**  
-$x_1 = -2.1 (y_1 = -1)$  
-$x_2 = -3.7 (y_2 = 1)$
+- 가장 가까운 두 개의 점: $x_1 = -2.1 (y_1 = -1)$, $x_2 = -3.7 (y_2 = 1)$
 
-- **결정 방법**  
-$y_1 = -1$, $y_2 = 1$ → 동점 발생  
-더 가까운 $x_1 = -2.1$를 기준으로 결정
-
+- 결정 방법  
+  - $y_1 = -1$, $y_2 = 1$ → 동점 발생  
+  - 더 가까운 $x_1 = -2.1$를 기준으로 결정
 
 ## KNN 알고리즘을 R 코드로 구현
 - x 는 훈련 데이터이고, z 는 예측할 데이터  
-- 각 훈련 데이터와 z 사이의 유클리드 거리를 계산하여 배열 dis 에 저장  
+- 각 훈련 데이터와 z 사이의 유클리드 거리를 계산하여 배열 `dis`에 저장  
 - 가장 가까운 k개의 이웃 선택  
-- 가장 많이 등장한 클래스의 이름을 반환
+- 가장 많이 등장한 클래스를 반환
 ```{r warning=FALSE}
 knn.1=function(x,y,z,k){
   x=as.matrix(x); n=nrow(x); p=ncol(x); dis=array(dim=n)
@@ -77,7 +72,7 @@ return(w)
 ```
 
 ## Iris 데이터셋을 이용한 예제
-- iris 데이터를 훈련/테스트 데이터로 나눔  
+- Iris 데이터를 훈련/테스트 데이터로 분할  
 - KNN 알고리즘 적용  
 - 예측값(w)과 실제값(ans)의 비교 표(혼동 행렬, confusion matrix)를 생성
 ```{r fig.height=5, fig.width=10, message=FALSE}
@@ -113,7 +108,7 @@ table(w,ans)
 - False Negative (FN, 거짓 음성, Type II Error): 실제로 아픈 사람을 건강하다고 판단한 경우
 - True Negative (TN, 진짜 음성): 건강한 사람을 건강하다고 정확하게 진단한 경우
 
-## TPR과 FPR의 뜻과 식
+## TPR과 FPR의 의미와 공식
 
 $$
 Power = \frac{TP}{TP + FN} = 1-\beta
@@ -132,7 +127,7 @@ $$
 - X축: False Positive Rate (FPR) → 건강한 사람을 병자로 잘못 분류한 비율
 - Y축: True Positive Rate (TPR) → 실제 병자를 올바르게 병자로 분류한 비율
 - ROC 곡선은 모델의 판별 성능을 보여줌
-- AUC 값이 높을수록 모델이 병자와 건강한 사람을 더 잘 구별
+- AUC 값이 높을수록 모델이 병자와 건강한 사람을 더 잘 구별함
 ```{r message=FALSE, echo=FALSE}
 N.0=10000;N.1=1000; mu.1=1; mu.0=-1; var.1=1; var.0=1
 x=rnorm(N.0,mu.0,var.0); y=rnorm(N.1,mu.1,var.1) # x: healthy: sick
@@ -152,7 +147,9 @@ text(0.5,0.5,paste("AUC=",AUC),col="red")
 
 
 ## 
+\centering
+\bf \Huge{Q\&A}
 
-\begin{center}
-  {\bf {\Huge 감사합니다}}
-\end{center}
+## 
+\centering
+\bf \Huge{Thank you :\text{)}}
